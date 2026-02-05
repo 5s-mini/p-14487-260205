@@ -28,4 +28,12 @@ public class RqTest {
         String actionName = rq.getParam("keyword");
         assertThat(actionName).isEqualTo("자바");
     }
+
+    @Test
+    @DisplayName(value = "명령: 목록?keywordType=title일 때, rq.getParam(\"keywordType\") -> \"title\"")
+    void t4() {
+        Rq rq = new Rq("목록?keywordType=title");
+        String actionName = rq.getParam("keywordType");
+        assertThat(actionName).isEqualTo("title");
+    }
 }
