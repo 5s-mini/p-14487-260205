@@ -25,7 +25,7 @@ public class RqTest {
     @DisplayName(value = "명령: 목록?keyword=자바일 때, rq.getParam(\"keyword\") -> 자바")
     void t3() {
         Rq rq = new Rq("목록?keyword=자바");
-        String rst = rq.getParam("keyword");
+        String rst = rq.getParam("keyword", "");
         assertThat(rst).isEqualTo("자바");
     }
 
@@ -33,7 +33,7 @@ public class RqTest {
     @DisplayName(value = "명령: 목록?keywordType=title일 때, rq.getParam(\"keywordType\") -> \"title\"")
     void t4() {
         Rq rq = new Rq("목록?keywordType=title");
-        String rst = rq.getParam("keywordType");
+        String rst = rq.getParam("keywordType", "");
         assertThat(rst).isEqualTo("title");
     }
 
@@ -41,7 +41,7 @@ public class RqTest {
     @DisplayName(value = "명령: 목록?keyword=자바&keywordType=title일 때, rq.getParam(\"keywordType\") -> \"title\"")
     void t5() {
         Rq rq = new Rq("목록?keyword=자바&keywordType=title");
-        String rst = rq.getParam("keywordType");
+        String rst = rq.getParam("keywordType", "");
         assertThat(rst).isEqualTo("title");
     }
 
@@ -65,7 +65,7 @@ public class RqTest {
     @DisplayName(value = "명령: 목록?keyword=자바&keywordType=title&page=1일 때, rq.getParam(\"keywordType\") -> \"title\"")
     void t8() {
         Rq rq = new Rq("목록?keyword=자바&keywordType=title&page=1");
-        String rst = rq.getParam("keywordType");
+        String rst = rq.getParam("keywordType", "");
         assertThat(rst).isEqualTo("title");
     }
 
@@ -75,5 +75,13 @@ public class RqTest {
         Rq rq = new Rq("삭제?id=aaa");
         int rst = rq.getParamAsInt("id", -1);
         assertThat(rst).isEqualTo(-1);
+    }
+
+    @Test
+    @DisplayName(value = "명령: 목록?keyword=자바일 때, rq.getParam(\"keywordType\", -1) -> -1")
+    void t10() {
+        Rq rq = new Rq("목록?keyword=자바");
+        String  rst = rq.getParam("keywordType", "");
+        assertThat(rst).isEqualTo("");
     }
 }
