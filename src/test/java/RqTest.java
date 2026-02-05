@@ -60,4 +60,12 @@ public class RqTest {
         int rst = rq.getParamAsInt("page");
         assertThat(rst).isEqualTo(10);
     }
+
+    @Test
+    @DisplayName(value = "명령: 목록?keyword=자바&keywordType=title&page=1일 때, rq.getParam(\"keywordType\") -> \"title\"")
+    void t8() {
+        Rq rq = new Rq("목록?keyword=자바&keywordType=title&page=1");
+        String rst = rq.getParam("keywordType");
+        assertThat(rst).isEqualTo("title");
+    }
 }
