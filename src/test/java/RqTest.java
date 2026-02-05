@@ -25,15 +25,15 @@ public class RqTest {
     @DisplayName(value = "명령: 목록?keyword=자바일 때, rq.getParam(\"keyword\") -> 자바")
     void t3() {
         Rq rq = new Rq("목록?keyword=자바");
-        String actionName = rq.getParam("keyword");
-        assertThat(actionName).isEqualTo("자바");
+        String rst = rq.getParam("keyword");
+        assertThat(rst).isEqualTo("자바");
     }
 
     @Test
     @DisplayName(value = "명령: 목록?keywordType=title일 때, rq.getParam(\"keywordType\") -> \"title\"")
     void t4() {
         Rq rq = new Rq("목록?keywordType=title");
-        String actionName = rq.getParam("keywordType");
-        assertThat(actionName).isEqualTo("title");
+        String rst = rq.getParam("keywordType");
+        assertThat(rst).isEqualTo("title");
     }
 }
