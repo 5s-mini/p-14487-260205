@@ -23,7 +23,7 @@ public class Rq {
             }
         }
 
-        return "";
+        return defaultValue;
     }
 
     public int getParamAsInt(String key, int defaultValue) {
